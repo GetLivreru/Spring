@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './AddProduct.css'
+
+
 
 const AddProduct = () => {
     const [name, setName] = useState('');
@@ -32,27 +35,29 @@ const AddProduct = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Product Name:</label>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label>Price:</label>
-                <input
-                    type="number"  // Изменено на "number"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    required
-                />
-            </div>
-            <button type="submit">Add Product</button>
-        </form>
+        <div className="add-product-container">
+            <form onSubmit={handleSubmit} className="add-product-form">
+                <div className="form-group">
+                    <label>Product Name:</label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Price:</label>
+                    <input
+                        type="number"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit" className="add-product-button">Add Product</button>
+            </form>
+        </div>
     );
 };
 

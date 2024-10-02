@@ -5,7 +5,7 @@ import AddProduct from './components/AddProduct';
 
 const App = () => {
   return (
-      <div>
+      <div className="App">
         <h1>Product Management</h1>
         <AddProduct />
         <ProductList />
