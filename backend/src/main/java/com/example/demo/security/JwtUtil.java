@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo.security;
 
 import io.jsonwebtoken.*;
 import org.springframework.security.core.Authentication;
