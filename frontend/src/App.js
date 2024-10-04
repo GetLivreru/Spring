@@ -1,12 +1,19 @@
+import React, { useState } from 'react'; // Добавьте useState
 import logo from './logo.svg';
 import './App.css';
 import ProductList from './components/ProductList';
 import AddProduct from './components/AddProduct';
 import Login from './components/Login';
 import Register from './components/Register';
-
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 const App = () => {
+    const [token, setToken] = useState(null); // Определите состояние для token и setToken
+
+    const handleLogout = () => {
+        setToken(null); // Обнуляем токен при выходе
+    };
+
     return (
         <Router>
             <div className="App">
