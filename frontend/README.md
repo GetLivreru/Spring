@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
-## Available Scripts
+Angular Frontend connected to a Spring Boot backend.
 
-In the project directory, you can run:
+The frontend is as simple as possible to just show the logic of authentication via a JWT.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Run on local
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+yarn start
+```
 
-### `npm test`
+The application will run on `http://localhost:4200`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Components
 
-### `npm run build`
+### App Component
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Main wrapper component. It has no logic inside. It just places the Header and the AppContent.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Content Component
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Displays the Buttons and the Content of the application.
 
-### `npm run eject`
+The Buttons are there to show the login form or logout the user.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+At the beginning, nothing is shown but the WelcomeContent component with a welcome message.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once authenticated via the login form, the AppContent component displays the AuthContent component with the protected information.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Buttons Component
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+It displays two buttons. The login button only displays the login form. The logout button removes all the authentication information of the user.
 
-## Learn More
+### Header Component
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Static header with the title and the logo.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Login Form Component
 
-### Code Splitting
+Displays a splitted Form with the Login form on one side and the register form on the other side. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Submitting one form or the other will request different endpoints in the backend.
 
-### Analyzing the Bundle Size
+### Welcome Content Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Simple component which displays a Welcome message.
 
-### Making a Progressive Web App
+## Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The authentication used is JWT. First, the user must login in the backend with a username and password.
 
-### Advanced Configuration
+If the credentials are correct, a JWT will be returned.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The JWT will be stored in the localstorage for further usage.
 
-### Deployment
+When available the JWT will be sent in the Authorization Header for each requests made with axios.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
