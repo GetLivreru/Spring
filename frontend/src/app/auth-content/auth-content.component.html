@@ -1,13 +1,11 @@
-<div class="row justify-content-md-center">
-  <div class="col-4">
-    <div class="card" style="width: '18rem'">
-      <div class="card-body">
-        <h5 class="card-title">Backend response</h5>
-        <p class="card-text">Content:</p>
-        <ul>
-          <li *ngFor="let line of data">{{line}}</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div *ngIf="isLoggedIn; else loginContent">
+  <app-chat></app-chat>
 </div>
+
+<ng-template #loginContent>
+  <h3>Backend response</h3>
+  <p>Content:</p>
+  <ul>
+    <li *ngFor="let item of data">{{ item }}</li>
+  </ul>
+</ng-template>
