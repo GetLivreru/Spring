@@ -32,6 +32,8 @@ public class UserAuthenticationProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
+
+
     public String createToken(UserDto user) {
         Date now = new Date();
         Date validity = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hour
