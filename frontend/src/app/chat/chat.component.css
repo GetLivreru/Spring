@@ -1,0 +1,27 @@
+.chat-container {
+  display: flex;
+  justify-content: center;  /* Центрирование по горизонтали */
+  align-items: center;      /* Центрирование по вертикали */
+  height: 100vh;            /* Высота контейнера на всю высоту окна браузера */
+  flex-direction: column;   /* Разместить элементы (окно чата и форму) по вертикали */
+}
+
+.chat-window {
+  width: 80%;               /* Устанавливаем ширину окна чата */
+  height: 60%;              /* Устанавливаем высоту окна чата */
+  background-color: #f0f0f0; /* Цвет фона для наглядности */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;         /* Прокрутка, если сообщений будет больше, чем высота окна */
+}
+
+input, button {
+  margin-top: 10px;
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+}
