@@ -1,0 +1,3 @@
+com\sergio\jwt\backend\entites\TokenRefreshRequest.class
+com\sergio\jwt\backend\entites\TokenResponse.class
+com\sergio\jwt\backend\entites\TokenRefreshResponse.class
