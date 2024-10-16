@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.sergio.jwt.backend.dtos.UserDto;
+import com.sergio.jwt.backend.entites.TokenResponse;
 import com.sergio.jwt.backend.services.UserService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -28,15 +29,21 @@ public class UserAuthenticationProvider {
 
     @PostConstruct
     protected void init() {
-        // this is to avoid having the raw secret key available in the JVM
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
+    // Генерация Access и Refresh токенов
+    public TokenResponse createTokens(UserDto user) {
+        String accessToken = createAccessToken(user);
+        String refreshToken = createRefreshToken(user);
 
+        return new TokenResponse(accessToken, refreshToken);
+    }
 
-    public String createToken(UserDto user) {
+    // Создание Access Token (остается как в текущем коде)
+    public String createAccessToken(UserDto user) {
         Date now = new Date();
-        Date validity = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hour
+        Date validity = new Date(now.getTime() + 2 * 60 * 1000); // 15 минут
 
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         return JWT.create()
@@ -48,12 +55,24 @@ public class UserAuthenticationProvider {
                 .sign(algorithm);
     }
 
+    // Создание Refresh Token (24 часа)
+    public String createRefreshToken(UserDto user) {
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 часа
+
+        Algorithm algorithm = Algorithm.HMAC256(secretKey);
+        return JWT.create()
+                .withSubject(user.getLogin())
+                .withIssuedAt(now)
+                .withExpiresAt(validity)
+                .sign(algorithm);
+    }
+
+    // Валидация токенов (остается как в текущем коде)
     public Authentication validateToken(String token) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
-        JWTVerifier verifier = JWT.require(algorithm)
-                .build();
-
+        JWTVerifier verifier = JWT.require(algorithm).build();
         DecodedJWT decoded = verifier.verify(token);
 
         UserDto user = UserDto.builder()
@@ -68,14 +87,11 @@ public class UserAuthenticationProvider {
     public Authentication validateTokenStrongly(String token) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
-        JWTVerifier verifier = JWT.require(algorithm)
-                .build();
-
+        JWTVerifier verifier = JWT.require(algorithm).build();
         DecodedJWT decoded = verifier.verify(token);
 
         UserDto user = userService.findByLogin(decoded.getSubject());
 
         return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
     }
-
 }

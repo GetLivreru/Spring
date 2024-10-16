@@ -1,14 +1,17 @@
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\config\UserAuthenticationEntryPoint.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\controllers\AuthController.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\controllers\MessagesController.java
+C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\entites\TokenRefreshRequest.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\config\WebConfig.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\dtos\SignUpDto.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\dtos\CredentialsDto.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\exceptions\AppException.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\config\SecurityConfig.java
+C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\entites\TokenResponse.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\dtos\UserDto.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\entites\User.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\repositories\UserRepository.java
+C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\entites\TokenRefreshResponse.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\config\RestExceptionHandler.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\BackendApplication.java
 C:\Users\Victus\Desktop\Spring\backend\src\main\java\com\sergio\jwt\backend\dtos\ErrorDto.java

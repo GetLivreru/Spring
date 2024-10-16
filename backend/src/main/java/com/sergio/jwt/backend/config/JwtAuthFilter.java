@@ -26,15 +26,23 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         if (header != null) {
             String[] authElements = header.split(" ");
 
-            if (authElements.length == 2
-                    && "Bearer".equals(authElements[0])) {
+            // Проверка на правильный формат токена
+            if (authElements.length == 2 && "Bearer".equals(authElements[0])) {
+                String token = authElements[1];
+
+                // Проверка формата токена
+                if (!isValidJwtFormat(token)) {
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid token format");
+                    return;
+                }
+
                 try {
                     if ("GET".equals(request.getMethod())) {
                         SecurityContextHolder.getContext().setAuthentication(
-                                userAuthenticationProvider.validateToken(authElements[1]));
+                                userAuthenticationProvider.validateToken(token));
                     } else {
                         SecurityContextHolder.getContext().setAuthentication(
-                                userAuthenticationProvider.validateTokenStrongly(authElements[1]));
+                                userAuthenticationProvider.validateTokenStrongly(token));
                     }
                 } catch (RuntimeException e) {
                     SecurityContextHolder.clearContext();
@@ -44,5 +52,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    // Метод для проверки формата JWT токена
+    private boolean isValidJwtFormat(String token) {
+        // Проверка, что токен состоит из трех частей, разделенных точками
+        String[] parts = token.split("\\.");
+        return parts.length == 3;
     }
 }
