@@ -13,6 +13,7 @@ import { ContentComponent } from './content/content.component';
 
 import { AxiosService } from './axios.service';
 import { ChatComponent } from './chat/chat.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ChatComponent } from './chat/chat.component';
     WelcomeContentComponent,
     AuthContentComponent,
     ContentComponent,
-    ChatComponent
+    ChatComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

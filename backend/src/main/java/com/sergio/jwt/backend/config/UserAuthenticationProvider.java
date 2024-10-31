@@ -43,7 +43,7 @@ public class UserAuthenticationProvider {
     // Создание Access Token (остается как в текущем коде)
     public String createAccessToken(UserDto user) {
         Date now = new Date();
-        Date validity = new Date(now.getTime() + 2 * 60 * 1000); // 15 минут
+        Date validity = new Date(now.getTime() + 15 * 60 * 1000); // 15 минут
 
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         return JWT.create()

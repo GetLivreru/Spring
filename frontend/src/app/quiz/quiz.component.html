@@ -1,0 +1,14 @@
+<div *ngIf="quiz"> <!-- отображаем тест только если он загружен -->
+  <h2>{{ quiz.title }}</h2>
+  <p>{{ quiz.description }}</p>
+
+  <div *ngFor="let question of quiz.questions"> <!-- цикл по вопросам -->
+    <p>{{ question.questionText }}</p>
+    <ul>
+      <li>{{ question.option1 }}</li> <!-- Варианты ответов -->
+      <li>{{ question.option2 }}</li>
+      <li>{{ question.option3 }}</li>
+      <li>{{ question.option4 }}</li>
+    </ul>
+  </div>
+</div>

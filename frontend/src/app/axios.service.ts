@@ -10,7 +10,6 @@ export class AxiosService {
     axios.defaults.baseURL = 'http://localhost:8080';
     axios.defaults.headers.post['Content-Type'] = 'application/json';
   }
-
   getAuthToken(): string | null {
     return window.localStorage.getItem("auth_token");
   }
